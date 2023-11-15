@@ -81,7 +81,7 @@ public class Book {
         japplication.put("id", getId());
         japplication.put("name", getName());
         japplication.put("author", getAuthor());
-        japplication.put("library", getLibrary());
+        japplication.put("library_id", getLibrary().getId());
 
         return japplication;
     }
