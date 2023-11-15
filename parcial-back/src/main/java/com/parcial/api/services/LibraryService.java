@@ -13,6 +13,10 @@ public class LibraryService {
         this.libraryRepository = libraryRepository;
     }
 
+    public LibraryRepository getRepository() {
+        return this.libraryRepository;
+    }
+
     public Library getLibraryById(Long libraryId) {
         return libraryRepository.findById(libraryId).orElse(null);
     }

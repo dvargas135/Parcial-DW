@@ -6,6 +6,7 @@
                 <th> id</th>
                 <th> name </th>
                 <th> author</th>
+                <th> library</th>
             </tr>
         </thead>
         <tbody>
@@ -13,10 +14,11 @@
                 <td> {{ book.id }} </td>
                 <td> {{ book.name }} </td>
                 <td> {{ book.author }} </td>
+                <td> {{ book.library_id }} </td>
                 <td>
-                    <button (click) = "updateBook(book.id)" class = "btn btn-info"> Update</button>
-                    <button (click) = "deleteBook(book.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
-                    <button (click) = "bookDetails(book.id)" class = "btn btn-info" style="margin-left: 10px"> View</button>
+                    <button [routerLink]="['/books/update', book.id]" class="btn btn-info">Update</button>
+                    <button (click)="deleteBook(book.id)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
+                    <button (click)="bookDetails(book.id)" class="btn btn-info" style="margin-left: 10px">View</button>
                 </td>
             </tr>
         </tbody>

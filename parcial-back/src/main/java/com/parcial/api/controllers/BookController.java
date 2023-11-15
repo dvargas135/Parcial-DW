@@ -1,9 +1,9 @@
 package com.parcial.api.controllers;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +23,7 @@ import com.parcial.api.services.BookService;
 
 @RestController
 public class BookController {
+    
     @Autowired
     private final BookService bookService;
 
@@ -32,10 +33,18 @@ public class BookController {
 
     @CrossOrigin
     @GetMapping(value = "/books", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> getAllAdmins() throws Exception {
-        List<Book> books = (List<Book>) bookService.getRepository().findAll();
-        HttpHeaders responseHeaders = new HttpHeaders();
-        return new ResponseEntity<>(Book.toJSONArray(books).toString(), responseHeaders, HttpStatus.OK);
+    public ResponseEntity<List<BookDTO>> getAllBooks() {
+        try {
+            List<Book> books = (List<Book>) bookService.getRepository().findAll();
+            
+            List<BookDTO> bookDTOs = books.stream()
+                    .map(BookDTO::new)
+                    .collect(Collectors.toList());
+
+            return new ResponseEntity<>(bookDTOs, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @CrossOrigin
@@ -103,6 +112,7 @@ public class BookController {
             library.setName(bookDTO.getLibrary().getName());
             library.setAddress(bookDTO.getLibrary().getAddress());
             library.setCity(bookDTO.getLibrary().getCity());
+            
             book.setLibrary(library);
         }
 

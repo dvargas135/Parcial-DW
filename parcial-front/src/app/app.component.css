@@ -5,7 +5,7 @@ nav {
 }
 
 .offcanvas-body {
-    background-color: #1e2225;
+    background-color: #ffffff;
 }
 
 .offcanvas-body .logo {
@@ -30,7 +30,7 @@ nav {
 }
 
 .sidebar-nav ul li a:hover {
-    background-color: grey;
+    background-color: rgb(233, 233, 233);
     border-radius: 4px;
 }
 
@@ -105,13 +105,13 @@ nav {
 }
 
 .search-bar button .search-icon {
-    color: #707070;
+    color: #ffffff;
     font-size: 1vw;
     cursor: pointer;
 }
 
 .container-extra {
-    background-color: #121212;
+    background-color: #ffffff;
 }
 
 .bi::before,
@@ -166,7 +166,7 @@ nav .logoTwo {
     display: flex;
     width: 19%;
     font-size: 2vw;
-    color: #777777;
+    color: #ffffff;
     cursor: pointer;
     padding-left: 3%;
     padding-right: 1.4%;
